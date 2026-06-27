@@ -13,8 +13,8 @@
     "url": "git+https://github.com/dadion123/agent-context-doctor.git"
   },
   "bin": {
-    "agent-context-doctor": "./dist/cli.js",
-    "acd": "./dist/cli.js"
+    "agent-context-doctor": "dist/cli.js",
+    "acd": "dist/cli.js"
   },
   "files": [
     "dist",
