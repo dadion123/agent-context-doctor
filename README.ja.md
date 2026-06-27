@@ -120,6 +120,7 @@ acd ci . --min-score 80
 - [TODO](docs/TODO.md)
 - [Codex For Open Source Strategy](docs/CODEX_FOR_OSS_STRATEGY.md)
 - [Codex For Open Source Application Evidence](docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md)
+- [Codex For Open Source Submission Draft](docs/CODEX_FOR_OPEN_SOURCE_SUBMISSION.md)
 - [Release Checklist](docs/RELEASE_CHECKLIST.md)
 
 ## ライセンス

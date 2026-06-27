@@ -83,3 +83,5 @@ Agent Context Doctor helps open-source maintainers keep AI coding agent instruct
 The current MVP supports `AGENTS.md`, `CLAUDE.md`, Cursor rules, Copilot instructions, README setup notes, package scripts, `.env.example`, and `.gitignore`. It is designed for CI use through `acd ci`, GitHub Actions annotations, JSON output, and SARIF output for Code Scanning. This gives maintainers visible evidence when agent context has drifted from real project commands or safety boundaries.
 
 The project has a Japanese-first maintainer focus. Japanese reports are available through `--locale ja`, and the roadmap prioritizes Japanese OSS maintainers who are adopting Codex, Claude Code, Cursor, and Copilot while needing safer context hygiene.
+
+See [CODEX_FOR_OPEN_SOURCE_SUBMISSION.md](CODEX_FOR_OPEN_SOURCE_SUBMISSION.md) for the shorter submission-ready draft.
