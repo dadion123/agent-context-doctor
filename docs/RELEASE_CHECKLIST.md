@@ -4,6 +4,7 @@ Use this before the first public release.
 
 ## Local Verification
 
+- `node --version` should satisfy `>=22.13`
 - `pnpm install`
 - `pnpm test`
 - `pnpm build`

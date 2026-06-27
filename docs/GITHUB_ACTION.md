@@ -25,7 +25,7 @@ jobs:
           version: 11.7.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
@@ -67,3 +67,4 @@ After npm publication as `agent-context-doctor`, downstream projects should be a
 - Start with `--min-score 70` while introducing the tool.
 - Raise to `80` once `AGENTS.md`, `CLAUDE.md`, README setup notes, and maintainer workflow docs are stable.
 - Keep `fix` as a local maintainer action. CI should report drift, not rewrite repository files.
+- Use Node 24 or newer enough for pnpm 11.
