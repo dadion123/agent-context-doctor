@@ -4,9 +4,9 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 
 ## Now
 
-1. Verify `v0.1.1` after npm and GitHub release publication.
-2. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
-3. Decide the `v0.2.0` scope.
+1. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
+2. Decide the `v0.2.0` scope.
+3. Collect Japanese OSS maintainer feedback.
 
 ## Next
 
@@ -39,6 +39,9 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 
 - Published `agent-context-doctor@0.1.0` to npm.
 - Published GitHub release `v0.1.0`.
+- Published `agent-context-doctor@0.1.1` to npm.
+- Published GitHub release `v0.1.1`.
+- Verified `uses: dadion123/agent-context-doctor@v0.1.1` from an external fixture repository.
 - Verified `uses: dadion123/agent-context-doctor@v0.1.0` from an external fixture repository.
 - Added bilingual public README surface.
 - Added GitHub annotations for CI warnings and failures.
