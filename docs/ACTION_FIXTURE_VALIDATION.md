@@ -2,6 +2,21 @@
 
 This page records evidence that the published composite GitHub Action works from another repository.
 
+## Verified Release: v0.2.0 Drift Fixture
+
+- Action: `dadion123/agent-context-doctor@v0.2.0`
+- Date: 2026-06-27
+- Fixture repository: `https://github.com/dadion123/agent-context-doctor-drifted-fixture`
+- Fixture visibility: public
+- Workflow run: `https://github.com/dadion123/agent-context-doctor-drifted-fixture/actions/runs/28290907857`
+- Conclusion: failure by design, after SARIF upload succeeded
+- Result: `Score: 52/100`
+- Locale: `ja`
+- GitHub annotations: emitted for 8 drift checks
+- Code Scanning alerts: 8 open alerts from SARIF
+
+See [DRIFT_FIXTURE_EVIDENCE.md](DRIFT_FIXTURE_EVIDENCE.md) for details.
+
 ## Verified Release: v0.1.1
 
 - Action: `dadion123/agent-context-doctor@v0.1.1`

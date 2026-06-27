@@ -59,3 +59,10 @@ jobs:
 
 SARIF output avoids embedding the local absolute repository root.
 
+## Public Evidence
+
+The public drift fixture demonstrates GitHub annotations and Code Scanning alerts from SARIF upload:
+
+- Fixture repository: `https://github.com/dadion123/agent-context-doctor-drifted-fixture`
+- Verified run: `https://github.com/dadion123/agent-context-doctor-drifted-fixture/actions/runs/28290907857`
+- Evidence notes: [DRIFT_FIXTURE_EVIDENCE.md](DRIFT_FIXTURE_EVIDENCE.md)

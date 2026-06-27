@@ -115,6 +115,7 @@ acd ci . --min-score 80
 - [SARIF Output](docs/SARIF.md)
 - [GitHub Action Usage](docs/GITHUB_ACTION.md)
 - [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md)
+- [Public Drift Fixture Evidence](docs/DRIFT_FIXTURE_EVIDENCE.md)
 - [Roadmap](docs/ROADMAP.md)
 - [TODO](docs/TODO.md)
 - [Codex For Open Source Strategy](docs/CODEX_FOR_OSS_STRATEGY.md)

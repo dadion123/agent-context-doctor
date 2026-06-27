@@ -56,6 +56,8 @@ jobs:
 
 The composite action has been verified from an external fixture repository. See [ACTION_FIXTURE_VALIDATION.md](ACTION_FIXTURE_VALIDATION.md).
 
+A deliberately drifted public fixture demonstrates annotations and SARIF upload. See [DRIFT_FIXTURE_EVIDENCE.md](DRIFT_FIXTURE_EVIDENCE.md).
+
 ## GitHub Annotations
 
 When `acd ci` runs inside GitHub Actions, Agent Context Doctor emits workflow annotations for `warn` and `fail` checks.

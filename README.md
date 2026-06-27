@@ -190,6 +190,7 @@ See [docs/SARIF.md](docs/SARIF.md) for `--sarif`, `--output`, and GitHub `upload
 - [SECURITY.md](SECURITY.md)
 - [docs/TODO.md](docs/TODO.md)
 - [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md)
+- [docs/DRIFT_FIXTURE_EVIDENCE.md](docs/DRIFT_FIXTURE_EVIDENCE.md)
 - [docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md](docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md)
 - [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)
 - [docs/SARIF.md](docs/SARIF.md)

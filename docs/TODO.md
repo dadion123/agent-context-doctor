@@ -4,9 +4,9 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 
 ## Now
 
-1. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
-2. Validate `v0.2.0` SARIF output from a public drifted fixture.
-3. Collect Japanese OSS maintainer feedback.
+1. Collect Japanese OSS maintainer feedback.
+2. Polish the Japanese launch articles with `v0.2.0` evidence links.
+3. Add one more real-world-ish fixture, ideally monorepo or bloated context.
 
 ## Next
 
@@ -49,3 +49,8 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 - Added `examples/japanese-first-repo`.
 - Added draft Zenn and Qiita launch articles.
 - Added Codex for Open Source application evidence.
+- Published `agent-context-doctor@0.2.0` to npm.
+- Published GitHub release `v0.2.0`.
+- Added public drift fixture `dadion123/agent-context-doctor-drifted-fixture`.
+- Verified GitHub annotations and SARIF upload from public drift fixture run `28290907857`.
+- Verified 8 Code Scanning alerts from the public drift fixture.
