@@ -20,7 +20,8 @@
     "dist",
     "README.md",
     "README.ja.md",
-    "docs"
+    "docs",
+    "examples"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

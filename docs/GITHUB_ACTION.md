@@ -54,7 +54,19 @@ jobs:
           locale: "ja"
 ```
 
-`v0.1.0` was verified from an external fixture repository on 2026-06-27.
+`v0.1.0` was verified from an external fixture repository on 2026-06-27. See [ACTION_FIXTURE_VALIDATION.md](ACTION_FIXTURE_VALIDATION.md).
+
+## GitHub Annotations
+
+When `acd ci` runs inside GitHub Actions, Agent Context Doctor emits workflow annotations for `warn` and `fail` checks.
+
+- `fail` checks become `::error` annotations.
+- `warn` checks become `::warning` annotations.
+- `--json` stays machine-readable and does not include workflow commands.
+
+This keeps CI logs useful for humans while preserving clean JSON for automation.
+
+This behavior is currently on `main` and is staged for the next release after `v0.1.0`.
 
 ## Future Published Package Workflow
 

@@ -4,9 +4,9 @@
 
 Agent Context Doctor fits Codex for Open Source because it helps maintainers keep repository instructions accurate for Codex and other coding agents.
 
-Planned public repository: `dadion123/agent-context-doctor`
+Public repository: `dadion123/agent-context-doctor`
 
-Planned npm package: `agent-context-doctor`
+npm package: `agent-context-doctor`
 
 The strongest application angle is not "another AGENTS.md generator." It is:
 
@@ -14,16 +14,27 @@ The strongest application angle is not "another AGENTS.md generator." It is:
 
 ## Evidence To Build
 
-- Real repositories scanned
+- More real repositories scanned
 - Issues created from detected context drift
 - PRs where `acd scan` prevented stale instructions
-- GitHub Action usage
 - Japanese OSS maintainer feedback
 - Contributions to adjacent tools or specs
 
+## Evidence Already Built
+
+- Public repository exists: `https://github.com/dadion123/agent-context-doctor`
+- npm package exists: `https://www.npmjs.com/package/agent-context-doctor`
+- GitHub release exists: `v0.1.0`
+- GitHub Action was verified from an external fixture repository.
+- Deterministic checks run without LLM API dependency.
+- Japanese report output exists via `--locale ja` and `--jp`.
+- CI annotations exist for GitHub Actions warnings and failures.
+- Japanese-first fixture exists under `examples/japanese-first-repo`.
+- Safe fixes cover `.gitignore` `.env` protection and README `.env.example` setup notes.
+
 ## Features That Strengthen The Application
 
-- `acd ci` with JSON and SARIF
+- `acd ci` with JSON, GitHub annotations, and future SARIF
 - Rule documentation with before/after examples
 - Safe patch plans
 - Public examples for bloated and drifted agent contexts
@@ -32,8 +43,8 @@ The strongest application angle is not "another AGENTS.md generator." It is:
 
 ## Near-Term Actions
 
-1. Publish the initial repository.
+1. Add SARIF output.
 2. Add three example repositories.
-3. Write a Japanese launch article.
+3. Finish the Japanese launch articles.
 4. Open small PRs or issues in adjacent projects with concrete compatibility notes.
-5. Add GitHub Action documentation.
+5. Collect feedback from Japanese OSS maintainers.

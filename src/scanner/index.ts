@@ -176,7 +176,7 @@ function buildPatchPlan(context: ScanContext, checks: Array<{ id: string; status
       path: "README.md",
       reason: ".env.example exists but setup docs do not mention it.",
       risk: "low",
-      dryRunOnly: true
+      dryRunOnly: !context.exists.readme
     });
   }
 

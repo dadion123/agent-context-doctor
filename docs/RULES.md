@@ -30,12 +30,17 @@ Agent Context Doctor starts with deterministic rules. Missing evidence creates w
 - The CLI must not print secrets or `.env` contents.
 - Japanese-first repositories should get natural Japanese guidance.
 
-## First Autofix
+## Low-Risk Autofixes
 
-`env-gitignore` can produce the first low-risk autofix:
+`fix` is dry-run first. File writes require explicit `--apply`:
 
 ```bash
 acd fix . --apply
 ```
 
-It appends `.env` to an existing `.gitignore` only when a local `.env` path exists and `.env` is not already ignored.
+Current main-branch low-risk autofixes for the next release:
+
+- `env-gitignore`: append `.env` to an existing `.gitignore` only when a local `.env` path exists and `.env` is not already ignored.
+- `env-example-mentioned`: append a generic `.env.example` setup note to an existing `README.md` when `.env.example` exists but repository docs do not mention it.
+
+Agent Context Doctor does not read or print `.env` contents.

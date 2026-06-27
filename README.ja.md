@@ -1,8 +1,31 @@
 # Agent Context Doctor
 
+[![CI](https://github.com/dadion123/agent-context-doctor/actions/workflows/ci.yml/badge.svg)](https://github.com/dadion123/agent-context-doctor/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/agent-context-doctor.svg)](https://www.npmjs.com/package/agent-context-doctor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 `AGENTS.md` / `CLAUDE.md` / Cursor rules / Copilot instructions を、短く・安全に・ズレなく保つための doctor-first CLI です。
 
 Agent Context Doctor は、AIコーディングエージェント向けの設定ファイルを「生成して終わり」にせず、継続的に診断・採点・差分検出・安全な修正提案を行うことを目的にしています。
+
+## すぐ試す
+
+```bash
+npx agent-context-doctor@latest scan . --locale ja
+npx agent-context-doctor@latest ci . --min-score 80
+```
+
+GitHub Actionsでは、リリースタグをpinして使えます。
+
+```yaml
+- uses: dadion123/agent-context-doctor@v0.1.0
+  with:
+    path: "."
+    min-score: "80"
+    locale: "ja"
+```
+
+`v0.1.0` の composite action は、別fixture repoから実行して `Score: 100/100` を確認済みです。詳細は [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md) に残しています。
 
 ## なぜ doctor-first なのか
 
@@ -29,7 +52,7 @@ pnpm dev -- fix . --apply
 pnpm dev -- ci .
 ```
 
-将来的な公開後は以下の形を想定しています。
+公開済みpackageは以下の形で使えます。
 
 ```bash
 npx agent-context-doctor scan .
@@ -60,9 +83,12 @@ acd ci . --min-score 80
 
 `fix` は dry-run first です。ファイルを書き換えるには `--apply` が必要です。
 
-現在の自動修正は、`.env` が存在し、既存の `.gitignore` に `.env` が入っていない場合に、`.gitignore` へ `.env` を追記するだけです。
+次回releaseに向けたmain branch上の低リスク自動修正は次の2つです。
 
-`.env` の中身は読み上げません。JSON出力にも含めません。
+- `.env` が存在し、既存の `.gitignore` に `.env` が入っていない場合、`.gitignore` へ `.env` を追記する
+- `.env.example` があるのに README に説明がない場合、README に短いセットアップ説明を追記する
+
+`.env` の中身は読みません。JSON出力にも含めません。
 
 ## 日本語ユーザー向けの価値
 
@@ -71,15 +97,24 @@ acd ci . --min-score 80
 - 日本語OSSメンテナーが、PRレビュー・Issue triage・リリース作業でAIを安全に使いやすくなります。
 - Zenn / Qiitaで語られている運用知を、CLIの診断ルールとして育てられます。
 
+## サンプル
+
+- [minimal-repo](examples/minimal-repo)
+- [bloated-context-repo](examples/bloated-context-repo)
+- [drifted-context-repo](examples/drifted-context-repo)
+- [japanese-first-repo](examples/japanese-first-repo)
+
 ## 関連ドキュメント
 
 - [MVP Spec](docs/MVP_SPEC.md)
 - [Rules](docs/RULES.md)
 - [JSON Report Contract](docs/JSON_SCHEMA.md)
 - [GitHub Action Usage](docs/GITHUB_ACTION.md)
+- [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md)
 - [Roadmap](docs/ROADMAP.md)
 - [TODO](docs/TODO.md)
 - [Codex For Open Source Strategy](docs/CODEX_FOR_OSS_STRATEGY.md)
+- [Codex For Open Source Application Evidence](docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md)
 - [Release Checklist](docs/RELEASE_CHECKLIST.md)
 
 ## ライセンス

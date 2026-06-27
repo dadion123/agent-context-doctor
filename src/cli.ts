@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import { applySafeFixes, formatAppliedFixes, formatPatchPlan, formatTextReport, scanRepository } from "./index.js";
+import { formatGithubAnnotations } from "./reporters/github.js";
 import type { ReportLocale, ScanReport } from "./types.js";
 
 const program = new Command();
@@ -128,6 +129,9 @@ program
   .action(async (target: string, options: CiOptions) => {
     const report = await scanRepository(target);
     printReport(report, options);
+    if (!options.json) {
+      printGithubAnnotations(report);
+    }
 
     const threshold = Number.parseInt(options.minScore, 10);
     if (Number.isFinite(threshold) && report.score < threshold) {
@@ -156,6 +160,14 @@ function printReport(report: ScanReport, options: TextOptions): void {
 
 function printJson(value: unknown): void {
   process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
+}
+
+function printGithubAnnotations(report: ScanReport): void {
+  if (process.env.GITHUB_ACTIONS !== "true") {
+    return;
+  }
+
+  process.stdout.write(formatGithubAnnotations(report));
 }
 
 interface TextOptions {

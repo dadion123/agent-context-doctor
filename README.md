@@ -1,10 +1,37 @@
 # Agent Context Doctor
 
+[![CI](https://github.com/dadion123/agent-context-doctor/actions/workflows/ci.yml/badge.svg)](https://github.com/dadion123/agent-context-doctor/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/agent-context-doctor.svg)](https://www.npmjs.com/package/agent-context-doctor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Doctor-first CLI for keeping `AGENTS.md`, `CLAUDE.md`, Cursor rules, and Copilot instructions clean, minimal, consistent, and safe.
 
 日本語README: [README.ja.md](README.ja.md)
 
 Agent Context Doctor は、Codex / Claude Code / Cursor / GitHub Copilot などのAIコーディングエージェントに渡すリポジトリ文脈を診断・整理するOSS CLIです。特に日本語ユーザー・日本語OSSメンテナーが、AI向け設定ファイルを安全に運用できる状態を目指します。
+
+## JP-First Maintainer UX
+
+This project keeps English public metadata for discovery, but the product direction is explicitly Japanese-first.
+
+- Japanese reports are available with `--locale ja` or `--jp`.
+- Japanese OSS maintainers are a primary audience, not an afterthought.
+- The tool focuses on diagnosis, score, drift evidence, and safe patch plans before generation.
+- It avoids LLM API dependency in the MVP, so CI can run deterministic checks without sending repository content to a model.
+
+## Install
+
+```bash
+npm install -D agent-context-doctor
+npx agent-context-doctor scan .
+```
+
+You can also run it without installing:
+
+```bash
+npx agent-context-doctor@latest scan . --locale ja
+npx agent-context-doctor@latest ci . --min-score 80
+```
 
 ## What It Diagnoses
 
@@ -46,7 +73,7 @@ pnpm dev -- sync . --dry-run
 pnpm dev -- ci .
 ```
 
-After publishing, the package will expose both names:
+The package exposes both CLI names:
 
 ```bash
 npx agent-context-doctor scan .
@@ -93,11 +120,16 @@ Suggested next steps:
 `fix` is dry-run first. It prints a patch plan unless `--apply` is explicit.
 
 ```bash
-pnpm dev -- fix . --dry-run
-pnpm dev -- fix . --apply
+acd fix . --dry-run
+acd fix . --apply
 ```
 
-The first low-risk autofix only appends `.env` to an existing `.gitignore` when a local `.env` file exists and is not clearly ignored. It does not read or print `.env` contents.
+Current main-branch low-risk autofixes for the next release:
+
+- append `.env` to an existing `.gitignore` when a local `.env` file exists and is not clearly ignored
+- append a short `.env.example` setup note to an existing `README.md` when `.env.example` is present but undocumented
+
+The CLI does not read or print `.env` contents.
 
 ## Japanese Reporter
 
@@ -116,6 +148,18 @@ pnpm dev -- scan . --json
 
 See [docs/GITHUB_ACTION.md](docs/GITHUB_ACTION.md) for CI usage.
 
+```yaml
+- uses: dadion123/agent-context-doctor@v0.1.0
+  with:
+    path: "."
+    min-score: "80"
+    locale: "ja"
+```
+
+The `v0.1.0` composite action has been verified from an external fixture repository. See [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md).
+
+On `main`, `acd ci` emits GitHub annotations for warnings and failures while keeping `--json` output clean for machines. This is staged for the next release after `v0.1.0`.
+
 ## Rule Reference
 
 See [docs/RULES.md](docs/RULES.md) for rule IDs, scope, and severity.
@@ -124,11 +168,20 @@ See [docs/RULES.md](docs/RULES.md) for rule IDs, scope, and severity.
 
 See [docs/JSON_SCHEMA.md](docs/JSON_SCHEMA.md) for the current JSON report shape.
 
+## Examples
+
+- [examples/minimal-repo](examples/minimal-repo)
+- [examples/bloated-context-repo](examples/bloated-context-repo)
+- [examples/drifted-context-repo](examples/drifted-context-repo)
+- [examples/japanese-first-repo](examples/japanese-first-repo)
+
 ## Contributing And Security
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [SECURITY.md](SECURITY.md)
 - [docs/TODO.md](docs/TODO.md)
+- [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md)
+- [docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md](docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md)
 - [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)
 
 ## Package And Repository
