@@ -13,16 +13,19 @@ Agent Context Doctor は、AIコーディングエージェント向けの設定
 ```bash
 npx agent-context-doctor@latest scan . --locale ja
 npx agent-context-doctor@latest ci . --min-score 80
+npx agent-context-doctor@latest ci . --sarif --output agent-context-doctor.sarif
 ```
 
 GitHub Actionsでは、リリースタグをpinして使えます。
 
 ```yaml
-- uses: dadion123/agent-context-doctor@v0.1.1
+- uses: dadion123/agent-context-doctor@v0.2.0
   with:
     path: "."
     min-score: "80"
     locale: "ja"
+    sarif: "true"
+    sarif-output: "agent-context-doctor.sarif"
 ```
 
 composite action は、別fixture repoから実行して `Score: 100/100` を確認済みです。詳細は [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md) に残しています。
@@ -109,6 +112,7 @@ acd ci . --min-score 80
 - [MVP Spec](docs/MVP_SPEC.md)
 - [Rules](docs/RULES.md)
 - [JSON Report Contract](docs/JSON_SCHEMA.md)
+- [SARIF Output](docs/SARIF.md)
 - [GitHub Action Usage](docs/GITHUB_ACTION.md)
 - [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md)
 - [Roadmap](docs/ROADMAP.md)

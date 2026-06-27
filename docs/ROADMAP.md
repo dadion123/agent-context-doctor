@@ -12,6 +12,7 @@
 
 - GitHub Action wrapper
 - SARIF output
+- Public drifted fixture with GitHub annotations and SARIF evidence
 - `oss-maintainer` preset
 - Release / PR review / issue triage rule improvements
 

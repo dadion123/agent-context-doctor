@@ -5,22 +5,21 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 ## Now
 
 1. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
-2. Decide the `v0.2.0` scope.
+2. Validate `v0.2.0` SARIF output from a public drifted fixture.
 3. Collect Japanese OSS maintainer feedback.
 
 ## Next
 
-1. Add SARIF output for code scanning integrations.
-2. Add `--format json` / `--format text` aliases while keeping `--json` stable.
-3. Add more real-world example repositories:
+1. Add `--format json` / `--format text` aliases while keeping `--json` stable.
+2. Add more real-world example repositories:
    - public downstream repository using the Action
    - deliberately drifted GitHub annotations fixture
    - monorepo fixture
-4. Add rule presets:
+3. Add rule presets:
    - `jp-minimal`
    - `oss-maintainer`
    - `node-package`
-5. Expand safe fixes beyond README `.env.example` note:
+4. Expand safe fixes beyond README `.env.example` note:
    - AGENTS adapter proposal
    - CLAUDE adapter proposal
 
@@ -45,6 +44,7 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 - Verified `uses: dadion123/agent-context-doctor@v0.1.0` from an external fixture repository.
 - Added bilingual public README surface.
 - Added GitHub annotations for CI warnings and failures.
+- Added SARIF output for code scanning integrations.
 - Added README `.env.example` safe autofix.
 - Added `examples/japanese-first-repo`.
 - Added draft Zenn and Qiita launch articles.

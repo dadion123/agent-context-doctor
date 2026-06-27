@@ -19,6 +19,14 @@ inputs:
     description: Text report language, en or ja.
     required: false
     default: "en"
+  sarif:
+    description: Write a SARIF report file for GitHub code scanning upload.
+    required: false
+    default: "false"
+  sarif-output:
+    description: SARIF report output path when sarif is true.
+    required: false
+    default: "agent-context-doctor.sarif"
 
 runs:
   using: composite
@@ -43,4 +51,9 @@ runs:
 
     - name: Run Agent Context Doctor
       shell: bash
-      run: node "$GITHUB_ACTION_PATH/dist/cli.js" ci "${{ inputs.path }}" --min-score "${{ inputs.min-score }}" --locale "${{ inputs.locale }}"
+      run: |
+        if [ "${{ inputs.sarif }}" = "true" ]; then
+          node "$GITHUB_ACTION_PATH/dist/cli.js" ci "${{ inputs.path }}" --min-score "${{ inputs.min-score }}" --locale "${{ inputs.locale }}" --sarif --output "${{ inputs.sarif-output }}"
+        else
+          node "$GITHUB_ACTION_PATH/dist/cli.js" ci "${{ inputs.path }}" --min-score "${{ inputs.min-score }}" --locale "${{ inputs.locale }}"
+        fi

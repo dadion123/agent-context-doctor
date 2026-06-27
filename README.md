@@ -31,6 +31,7 @@ You can also run it without installing:
 ```bash
 npx agent-context-doctor@latest scan . --locale ja
 npx agent-context-doctor@latest ci . --min-score 80
+npx agent-context-doctor@latest ci . --sarif --output agent-context-doctor.sarif
 ```
 
 ## What It Diagnoses
@@ -149,16 +150,20 @@ pnpm dev -- scan . --json
 See [docs/GITHUB_ACTION.md](docs/GITHUB_ACTION.md) for CI usage.
 
 ```yaml
-- uses: dadion123/agent-context-doctor@v0.1.1
+- uses: dadion123/agent-context-doctor@v0.2.0
   with:
     path: "."
     min-score: "80"
     locale: "ja"
+    sarif: "true"
+    sarif-output: "agent-context-doctor.sarif"
 ```
 
 The composite action has been verified from an external fixture repository. See [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md).
 
 `acd ci` emits GitHub annotations for warnings and failures while keeping `--json` output clean for machines.
+
+SARIF output is available for GitHub Code Scanning and other code scanning surfaces. See [docs/SARIF.md](docs/SARIF.md).
 
 ## Rule Reference
 
@@ -167,6 +172,10 @@ See [docs/RULES.md](docs/RULES.md) for rule IDs, scope, and severity.
 ## JSON Contract
 
 See [docs/JSON_SCHEMA.md](docs/JSON_SCHEMA.md) for the current JSON report shape.
+
+## SARIF Output
+
+See [docs/SARIF.md](docs/SARIF.md) for `--sarif`, `--output`, and GitHub `upload-sarif` usage.
 
 ## Examples
 
@@ -183,6 +192,7 @@ See [docs/JSON_SCHEMA.md](docs/JSON_SCHEMA.md) for the current JSON report shape
 - [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md)
 - [docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md](docs/CODEX_FOR_OPEN_SOURCE_APPLICATION.md)
 - [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)
+- [docs/SARIF.md](docs/SARIF.md)
 
 ## Package And Repository
 
@@ -217,9 +227,10 @@ The MVP starts with deterministic checks:
 - Safer patch plans for low-risk fixes
 - Japanese and English report messages
 - GitHub Action wrapper
+- SARIF output for code scanning surfaces
 - README / AGENTS / CLAUDE sync suggestions
 - Rule presets for `jp-minimal`, `oss-maintainer`, and `monorepo`
-- SARIF output for code scanning surfaces
+- Public drifted fixture with annotation and SARIF evidence
 - Documentation for Codex for Open Source maintainers
 
 ## License

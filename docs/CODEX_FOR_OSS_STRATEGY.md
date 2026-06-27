@@ -27,16 +27,18 @@ The strongest application angle is not "another AGENTS.md generator." It is:
 - GitHub release exists: `v0.1.0`
 - GitHub release exists: `v0.1.1`
 - `v0.1.1` packages GitHub annotations, README `.env.example` safe fix, Japanese fixture docs, and Codex application evidence.
+- `v0.2.0` scope adds SARIF output and Code Scanning integration docs.
 - GitHub Action was verified from an external fixture repository.
 - Deterministic checks run without LLM API dependency.
 - Japanese report output exists via `--locale ja` and `--jp`.
 - CI annotations exist for GitHub Actions warnings and failures.
+- SARIF output exists for Code Scanning and other SARIF consumers.
 - Japanese-first fixture exists under `examples/japanese-first-repo`.
 - Safe fixes cover `.gitignore` `.env` protection and README `.env.example` setup notes.
 
 ## Features That Strengthen The Application
 
-- `acd ci` with JSON, GitHub annotations, and future SARIF
+- `acd ci` with JSON, GitHub annotations, and SARIF
 - Rule documentation with before/after examples
 - Safe patch plans
 - Public examples for bloated and drifted agent contexts
@@ -45,8 +47,8 @@ The strongest application angle is not "another AGENTS.md generator." It is:
 
 ## Near-Term Actions
 
-1. Add SARIF output.
-2. Add three example repositories.
+1. Publish `v0.2.0` with SARIF output.
+2. Add a public drifted fixture with annotation and SARIF evidence.
 3. Finish the Japanese launch articles.
 4. Open small PRs or issues in adjacent projects with concrete compatibility notes.
 5. Collect feedback from Japanese OSS maintainers.

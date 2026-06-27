@@ -48,7 +48,7 @@ The CLI detects `.env` by path only and must not print its contents.
 ```json
 {
   "tool": "Agent Context Doctor",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "root": "/path/to/repo",
   "score": 72,
   "checks": [],

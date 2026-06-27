@@ -2,7 +2,7 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { applySafeFixes, formatGithubAnnotations, formatTextReport, scanRepository } from "../src/index.js";
+import { applySafeFixes, formatGithubAnnotations, formatSarifReport, formatTextReport, scanRepository } from "../src/index.js";
 
 let tempDir: string;
 
@@ -123,6 +123,33 @@ describe("scanRepository", () => {
     expect(annotations).toContain("::error title=ACD agents-exists::AGENTS.md not found.");
     expect(annotations).toContain("::warning title=ACD claude-exists::CLAUDE.md not found.");
     expect(annotations).toContain("Suggestion:");
+  });
+
+  it("formats SARIF for CI warnings and failures without leaking the absolute root", async () => {
+    await writeFile(path.join(tempDir, "README.md"), "# Example\n\nRun `pnpm test`.\n");
+    await writeFile(path.join(tempDir, "package.json"), JSON.stringify({ scripts: { test: "vitest run" } }, null, 2));
+
+    const report = await scanRepository(tempDir);
+    const sarif = formatSarifReport(report) as {
+      version: string;
+      runs: Array<{
+        tool: { driver: { name: string; version: string; rules: Array<{ id: string }> } };
+        results: Array<{ ruleId: string; level: string; locations: Array<{ physicalLocation: { artifactLocation: { uri: string } } }> }>;
+      }>;
+    };
+    const serialized = JSON.stringify(sarif);
+
+    expect(sarif.version).toBe("2.1.0");
+    expect(sarif.runs[0]?.tool.driver.name).toBe("Agent Context Doctor");
+    expect(sarif.runs[0]?.tool.driver.rules.some((rule) => rule.id === "agents-exists")).toBe(true);
+    expect(sarif.runs[0]?.results).toContainEqual(
+      expect.objectContaining({
+        ruleId: "agents-exists",
+        level: "error",
+        locations: [{ physicalLocation: { artifactLocation: { uri: "AGENTS.md" } } }]
+      })
+    );
+    expect(serialized).not.toContain(tempDir);
   });
 
   it("formats a Japanese text report", async () => {

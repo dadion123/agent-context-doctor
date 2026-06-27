@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+import { writeFile } from "node:fs/promises";
+import path from "node:path";
 import { Command } from "commander";
-import { applySafeFixes, formatAppliedFixes, formatPatchPlan, formatTextReport, scanRepository } from "./index.js";
+import { applySafeFixes, formatAppliedFixes, formatPatchPlan, formatSarifReport, formatTextReport, scanRepository } from "./index.js";
 import { formatGithubAnnotations } from "./reporters/github.js";
 import type { ReportLocale, ScanReport } from "./types.js";
 
@@ -9,18 +11,20 @@ const program = new Command();
 program
   .name("acd")
   .description("Doctor-first CLI for AGENTS.md, CLAUDE.md, Cursor rules, and Copilot instructions.")
-  .version("0.1.1");
+  .version("0.2.0");
 
 program
   .command("scan")
   .argument("[path]", "repository path", ".")
   .option("--json", "print JSON report")
+  .option("--sarif", "print SARIF report")
+  .option("--output <file>", "write JSON or SARIF report to a file")
   .option("--locale <locale>", "text report language: en or ja", "en")
   .option("--jp", "alias for --locale ja")
   .description("Scan a repository and print diagnostic checks.")
   .action(async (target: string, options: TextOptions) => {
     const report = await scanRepository(target);
-    printReport(report, options);
+    await printReport(report, options);
   });
 
 program
@@ -122,14 +126,16 @@ program
   .command("ci")
   .argument("[path]", "repository path", ".")
   .option("--json", "print JSON report")
+  .option("--sarif", "print SARIF report")
+  .option("--output <file>", "write JSON or SARIF report to a file")
   .option("--min-score <score>", "minimum accepted score", "70")
   .option("--locale <locale>", "text report language: en or ja", "en")
   .option("--jp", "alias for --locale ja")
   .description("Run scan for CI and exit non-zero below the score threshold.")
   .action(async (target: string, options: CiOptions) => {
     const report = await scanRepository(target);
-    printReport(report, options);
-    if (!options.json) {
+    const output = await printReport(report, options);
+    if (!output.machineReadableStdout) {
       printGithubAnnotations(report);
     }
 
@@ -149,17 +155,54 @@ function normalizeArgv(argv: string[]): string[] {
   return argv.filter((arg, index) => !(index >= 2 && arg === "--"));
 }
 
-function printReport(report: ScanReport, options: TextOptions): void {
-  if (options.json) {
-    printJson(report);
-    return;
+async function printReport(report: ScanReport, options: TextOptions): Promise<PrintResult> {
+  const format = resolveOutputFormat(options);
+
+  if (format === "json") {
+    const json = `${JSON.stringify(report, null, 2)}\n`;
+    if (options.output) {
+      await writeOutput(options.output, json);
+      process.stdout.write(formatTextReport(report, { locale: resolveLocale(options) }));
+      return { machineReadableStdout: false };
+    }
+    process.stdout.write(json);
+    return { machineReadableStdout: true };
+  }
+
+  if (format === "sarif") {
+    const sarif = `${JSON.stringify(formatSarifReport(report), null, 2)}\n`;
+    if (options.output) {
+      await writeOutput(options.output, sarif);
+      process.stdout.write(formatTextReport(report, { locale: resolveLocale(options) }));
+      return { machineReadableStdout: false };
+    }
+    process.stdout.write(sarif);
+    return { machineReadableStdout: true };
   }
 
   process.stdout.write(formatTextReport(report, { locale: resolveLocale(options) }));
+  return { machineReadableStdout: false };
+}
+
+function resolveOutputFormat(options: TextOptions): "text" | "json" | "sarif" {
+  if (options.json && options.sarif) {
+    throw new Error("Use only one machine-readable output format: --json or --sarif.");
+  }
+  if (options.sarif) {
+    return "sarif";
+  }
+  if (options.json) {
+    return "json";
+  }
+  return "text";
 }
 
 function printJson(value: unknown): void {
   process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
+}
+
+async function writeOutput(filePath: string, content: string): Promise<void> {
+  await writeFile(path.resolve(filePath), content, "utf8");
 }
 
 function printGithubAnnotations(report: ScanReport): void {
@@ -172,8 +215,14 @@ function printGithubAnnotations(report: ScanReport): void {
 
 interface TextOptions {
   json?: boolean;
+  sarif?: boolean;
+  output?: string;
   locale?: string;
   jp?: boolean;
+}
+
+interface PrintResult {
+  machineReadableStdout: boolean;
 }
 
 interface FixOptions extends TextOptions {

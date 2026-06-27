@@ -11,7 +11,9 @@ Use this before the first public release.
 - `node dist/cli.js scan .`
 - `node dist/cli.js scan . --locale ja`
 - `node dist/cli.js scan . --json`
+- `node dist/cli.js scan examples/drifted-context-repo --sarif`
 - `node dist/cli.js ci . --min-score 80`
+- `node dist/cli.js ci examples/drifted-context-repo --sarif --output agent-context-doctor.sarif --min-score 70`
 
 ## Metadata
 
@@ -26,6 +28,7 @@ Use this before the first public release.
 - Confirm `.env` contents are never printed.
 - Confirm `fix --apply` only applies low-risk fixes.
 - Confirm CI reports drift but does not rewrite files.
+- Confirm SARIF output does not embed the local absolute repository root.
 
 ## Publishing
 

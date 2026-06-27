@@ -2,12 +2,14 @@
 
 `acd scan . --json` prints a machine-readable report. The MVP keeps this shape stable so CI, dashboards, and future GitHub Action wrappers can rely on it.
 
+For GitHub Code Scanning and other SARIF consumers, use `acd ci . --sarif --output agent-context-doctor.sarif`. See [SARIF.md](SARIF.md).
+
 ## Top-Level Shape
 
 ```json
 {
   "tool": "Agent Context Doctor",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "root": "/path/to/repo",
   "score": 100,
   "checks": [],

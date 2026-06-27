@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dadion123/agent-context-doctor@v0.1.1
+      - uses: dadion123/agent-context-doctor@v0.2.0
         with:
           path: "."
           min-score: "80"
@@ -67,6 +67,42 @@ When `acd ci` runs inside GitHub Actions, Agent Context Doctor emits workflow an
 This keeps CI logs useful for humans while preserving clean JSON for automation.
 
 This behavior is available in `v0.1.1` and later.
+
+## SARIF And Code Scanning
+
+`v0.2.0` adds SARIF output for GitHub Code Scanning and other SARIF consumers.
+
+```yaml
+name: Agent Context Doctor
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  acd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dadion123/agent-context-doctor@v0.2.0
+        with:
+          path: "."
+          min-score: "80"
+          locale: "ja"
+          sarif: "true"
+          sarif-output: "agent-context-doctor.sarif"
+
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: agent-context-doctor.sarif
+```
+
+When SARIF is requested with `--output`, the normal text report stays in the workflow log and the SARIF file remains valid for upload.
 
 ## Future Published Package Workflow
 
