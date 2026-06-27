@@ -7,7 +7,7 @@
 ```json
 {
   "tool": "Agent Context Doctor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "root": "/path/to/repo",
   "score": 100,
   "checks": [],

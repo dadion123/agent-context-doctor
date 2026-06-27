@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name("acd")
   .description("Doctor-first CLI for AGENTS.md, CLAUDE.md, Cursor rules, and Copilot instructions.")
-  .version("0.1.0");
+  .version("0.1.1");
 
 program
   .command("scan")

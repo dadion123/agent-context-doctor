@@ -7,12 +7,14 @@ Agent Context Doctor is a doctor-first CLI for keeping AI coding agent context f
 - Public repository: `https://github.com/dadion123/agent-context-doctor`
 - npm package: `https://www.npmjs.com/package/agent-context-doctor`
 - Initial release: `https://github.com/dadion123/agent-context-doctor/releases/tag/v0.1.0`
+- Current release target: `v0.1.1`
 - CLI names: `agent-context-doctor`, `acd`
 - License: MIT
 
 ## Verified Usage Evidence
 
 - `agent-context-doctor@0.1.0` is published on npm.
+- `agent-context-doctor@0.1.1` includes GitHub annotations, README `.env.example` safe fix, Japanese fixture docs, and Codex application evidence.
 - `npx agent-context-doctor@latest --version` was verified after publication.
 - `npx agent-context-doctor@latest scan . --json` was verified after publication.
 - GitHub Action `dadion123/agent-context-doctor@v0.1.0` was verified from a separate fixture repository.

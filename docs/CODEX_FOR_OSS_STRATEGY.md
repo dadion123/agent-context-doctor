@@ -25,6 +25,7 @@ The strongest application angle is not "another AGENTS.md generator." It is:
 - Public repository exists: `https://github.com/dadion123/agent-context-doctor`
 - npm package exists: `https://www.npmjs.com/package/agent-context-doctor`
 - GitHub release exists: `v0.1.0`
+- `v0.1.1` release target packages GitHub annotations, README `.env.example` safe fix, Japanese fixture docs, and Codex application evidence.
 - GitHub Action was verified from an external fixture repository.
 - Deterministic checks run without LLM API dependency.
 - Japanese report output exists via `--locale ja` and `--jp`.

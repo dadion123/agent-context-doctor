@@ -1,6 +1,6 @@
 {
   "name": "agent-context-doctor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Doctor-first CLI for keeping AI coding agent context files clean, minimal, consistent, and safe.",
   "type": "module",
   "packageManager": "pnpm@11.7.0",

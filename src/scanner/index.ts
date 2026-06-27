@@ -4,7 +4,7 @@ import fg from "fast-glob";
 import { runRules } from "../rules/index.js";
 import type { PatchPlanItem, ScanContext, ScanReport } from "../types.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 export async function scanRepository(target = "."): Promise<ScanReport> {
   const root = path.resolve(target);

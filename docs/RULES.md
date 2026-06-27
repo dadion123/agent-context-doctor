@@ -38,7 +38,7 @@ Agent Context Doctor starts with deterministic rules. Missing evidence creates w
 acd fix . --apply
 ```
 
-Current main-branch low-risk autofixes for the next release:
+Current low-risk autofixes:
 
 - `env-gitignore`: append `.env` to an existing `.gitignore` only when a local `.env` path exists and `.env` is not already ignored.
 - `env-example-mentioned`: append a generic `.env.example` setup note to an existing `README.md` when `.env.example` exists but repository docs do not mention it.

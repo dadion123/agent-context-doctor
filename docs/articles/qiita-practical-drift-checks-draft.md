@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dadion123/agent-context-doctor@v0.1.0
+      - uses: dadion123/agent-context-doctor@v0.1.1
         with:
           path: "."
           min-score: "80"
@@ -75,4 +75,3 @@ npx agent-context-doctor@latest fix . --apply
 
 - GitHub: https://github.com/dadion123/agent-context-doctor
 - npm: https://www.npmjs.com/package/agent-context-doctor
-

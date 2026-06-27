@@ -39,6 +39,6 @@ Use this before the first public release.
   - `ai-agent`
   - `maintainer-tools`
   - `japanese`
-- Create `v0.1.0` tag after CI passes.
+- Create a `vX.Y.Z` tag after CI passes.
 - Publish npm package.
 - Draft Japanese launch article.

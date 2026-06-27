@@ -4,9 +4,9 @@ This list keeps the next public work for Agent Context Doctor visible and ordere
 
 ## Now
 
-1. Prepare the next release after the current main-branch improvements are verified.
-2. Publish future release notes in English and Japanese.
-3. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
+1. Verify `v0.1.1` after npm and GitHub release publication.
+2. Add a deliberately drifted public fixture or screenshot for GitHub annotations.
+3. Decide the `v0.2.0` scope.
 
 ## Next
 

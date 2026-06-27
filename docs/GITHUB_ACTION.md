@@ -47,14 +47,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dadion123/agent-context-doctor@v0.1.0
+      - uses: dadion123/agent-context-doctor@v0.1.1
         with:
           path: "."
           min-score: "80"
           locale: "ja"
 ```
 
-`v0.1.0` was verified from an external fixture repository on 2026-06-27. See [ACTION_FIXTURE_VALIDATION.md](ACTION_FIXTURE_VALIDATION.md).
+The composite action has been verified from an external fixture repository. See [ACTION_FIXTURE_VALIDATION.md](ACTION_FIXTURE_VALIDATION.md).
 
 ## GitHub Annotations
 
@@ -66,7 +66,7 @@ When `acd ci` runs inside GitHub Actions, Agent Context Doctor emits workflow an
 
 This keeps CI logs useful for humans while preserving clean JSON for automation.
 
-This behavior is currently on `main` and is staged for the next release after `v0.1.0`.
+This behavior is available in `v0.1.1` and later.
 
 ## Future Published Package Workflow
 

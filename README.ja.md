@@ -18,14 +18,14 @@ npx agent-context-doctor@latest ci . --min-score 80
 GitHub Actionsでは、リリースタグをpinして使えます。
 
 ```yaml
-- uses: dadion123/agent-context-doctor@v0.1.0
+- uses: dadion123/agent-context-doctor@v0.1.1
   with:
     path: "."
     min-score: "80"
     locale: "ja"
 ```
 
-`v0.1.0` の composite action は、別fixture repoから実行して `Score: 100/100` を確認済みです。詳細は [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md) に残しています。
+composite action は、別fixture repoから実行して `Score: 100/100` を確認済みです。詳細は [Action Fixture Validation](docs/ACTION_FIXTURE_VALIDATION.md) に残しています。
 
 ## なぜ doctor-first なのか
 
@@ -83,7 +83,7 @@ acd ci . --min-score 80
 
 `fix` は dry-run first です。ファイルを書き換えるには `--apply` が必要です。
 
-次回releaseに向けたmain branch上の低リスク自動修正は次の2つです。
+現在の低リスク自動修正は次の2つです。
 
 - `.env` が存在し、既存の `.gitignore` に `.env` が入っていない場合、`.gitignore` へ `.env` を追記する
 - `.env.example` があるのに README に説明がない場合、README に短いセットアップ説明を追記する

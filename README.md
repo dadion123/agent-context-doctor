@@ -124,7 +124,7 @@ acd fix . --dry-run
 acd fix . --apply
 ```
 
-Current main-branch low-risk autofixes for the next release:
+Current low-risk autofixes:
 
 - append `.env` to an existing `.gitignore` when a local `.env` file exists and is not clearly ignored
 - append a short `.env.example` setup note to an existing `README.md` when `.env.example` is present but undocumented
@@ -149,16 +149,16 @@ pnpm dev -- scan . --json
 See [docs/GITHUB_ACTION.md](docs/GITHUB_ACTION.md) for CI usage.
 
 ```yaml
-- uses: dadion123/agent-context-doctor@v0.1.0
+- uses: dadion123/agent-context-doctor@v0.1.1
   with:
     path: "."
     min-score: "80"
     locale: "ja"
 ```
 
-The `v0.1.0` composite action has been verified from an external fixture repository. See [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md).
+The composite action has been verified from an external fixture repository. See [docs/ACTION_FIXTURE_VALIDATION.md](docs/ACTION_FIXTURE_VALIDATION.md).
 
-On `main`, `acd ci` emits GitHub annotations for warnings and failures while keeping `--json` output clean for machines. This is staged for the next release after `v0.1.0`.
+`acd ci` emits GitHub annotations for warnings and failures while keeping `--json` output clean for machines.
 
 ## Rule Reference
 
