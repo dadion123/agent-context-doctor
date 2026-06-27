@@ -1,0 +1,40 @@
+name: Agent Context Doctor
+description: Scan AI coding agent context files for drift, bloat, and safety issues.
+author: DADION
+
+branding:
+  icon: activity
+  color: blue
+
+inputs:
+  path:
+    description: Repository path to scan.
+    required: false
+    default: "."
+  min-score:
+    description: Minimum accepted context health score.
+    required: false
+    default: "70"
+  locale:
+    description: Text report language, en or ja.
+    required: false
+    default: "en"
+
+runs:
+  using: composite
+  steps:
+    - name: Enable corepack
+      shell: bash
+      run: corepack enable
+
+    - name: Install Agent Context Doctor dependencies
+      shell: bash
+      run: pnpm --dir "$GITHUB_ACTION_PATH" install --frozen-lockfile
+
+    - name: Build Agent Context Doctor
+      shell: bash
+      run: pnpm --dir "$GITHUB_ACTION_PATH" build
+
+    - name: Run Agent Context Doctor
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/dist/cli.js" ci "${{ inputs.path }}" --min-score "${{ inputs.min-score }}" --locale "${{ inputs.locale }}"

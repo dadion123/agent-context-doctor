@@ -1,0 +1,12 @@
+src/
+tests/
+examples/
+.cursor/
+.github/
+*.log
+tsconfig.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+README.ja.md
+CONTRIBUTING.md
+SECURITY.md

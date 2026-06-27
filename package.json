@@ -1,0 +1,59 @@
+{
+  "name": "agent-context-doctor",
+  "version": "0.1.0",
+  "description": "Doctor-first CLI for keeping AI coding agent context files clean, minimal, consistent, and safe.",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "homepage": "https://github.com/dadion123/agent-context-doctor#readme",
+  "bugs": {
+    "url": "https://github.com/dadion123/agent-context-doctor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadion123/agent-context-doctor.git"
+  },
+  "bin": {
+    "agent-context-doctor": "./dist/cli.js",
+    "acd": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.ja.md",
+    "docs"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "agents-md",
+    "claude-md",
+    "cursor-rules",
+    "copilot-instructions",
+    "ai-agent",
+    "cli",
+    "doctor"
+  ],
+  "author": "DADION",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fast-glob": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.32",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

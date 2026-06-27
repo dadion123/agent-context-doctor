@@ -1,0 +1,8 @@
+---
+description: Agent Context Doctor project rule adapter
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+Use `AGENTS.md` as the canonical context. Cursor-specific rules should stay thin and avoid duplicating shared commands.
