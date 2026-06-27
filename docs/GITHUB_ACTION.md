@@ -34,7 +34,7 @@ jobs:
 
 ## Composite Action Workflow
 
-After this repository is published on GitHub, consumers should be able to use the root `action.yml`:
+Consumers can use the root `action.yml` from a pinned release tag:
 
 ```yaml
 name: Agent Context Doctor
@@ -47,16 +47,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dadion123/agent-context-doctor@v0
+      - uses: dadion123/agent-context-doctor@v0.1.0
         with:
           path: "."
           min-score: "80"
           locale: "ja"
 ```
 
+`v0.1.0` was verified from an external fixture repository on 2026-06-27.
+
 ## Future Published Package Workflow
 
-After npm publication as `agent-context-doctor`, downstream projects should be able to use:
+The npm package is also available as `agent-context-doctor`:
 
 ```yaml
 - run: npx agent-context-doctor ci . --min-score 80
@@ -68,3 +70,4 @@ After npm publication as `agent-context-doctor`, downstream projects should be a
 - Raise to `80` once `AGENTS.md`, `CLAUDE.md`, README setup notes, and maintainer workflow docs are stable.
 - Keep `fix` as a local maintainer action. CI should report drift, not rewrite repository files.
 - Use Node 24 or newer enough for pnpm 11.
+- Track upstream action runtime deprecation warnings. They may appear even when this action itself runs on Node 24.

@@ -128,6 +128,7 @@ See [docs/JSON_SCHEMA.md](docs/JSON_SCHEMA.md) for the current JSON report shape
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [SECURITY.md](SECURITY.md)
+- [docs/TODO.md](docs/TODO.md)
 - [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)
 
 ## Package And Repository
